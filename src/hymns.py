@@ -19,7 +19,8 @@ def parseAnnotationCsv(annCsv):
         items = list(group)
         spanStart, spanEnd = items[0][0], items[-1][0] + 1
         patterns[letter].append((spanStart, spanEnd))
-    return [(letter, spans) for letter, spans in patterns.items() if len(spans) > 1]
+    return [(letter, spans) for letter, spans in patterns.items()]
+    # return [(letter, spans) for letter, spans in patterns.items() if len(spans) > 1]
     
 def collectAnnotations(datadir: Path, outdir: Path):
     '''Collect all annotations and put them in a single file. Each annotation contains
@@ -84,6 +85,7 @@ if __name__ == '__main__':
         raise SystemExit(usage)
     dataPath = Path(args[1])
     if args[0] == 'pickle':
+        # python3 hymns.py pickle datasets/hymns
         outputPath = Path(args[2]) if len(args) == 3 else Path(args[1])
         sequences = loadSequences(dataPath / 'sequences.txt')
         annotations = loadAnnotationsFile(dataPath / 'annotations.txt')
@@ -91,6 +93,7 @@ if __name__ == '__main__':
         pickles = getPickles(sequences, annotations, 'hymns')
         writePickles(pickles, outputPath / 'hymns.pkl.gz')
     elif args[0] == 'ann':
+        # python3 hymns.py ann datasets/hymns/annotations/
         outputPath = Path(args[2]) if len(args) == 3 else Path(args[1]).parent
         collectAnnotations(Path(args[1]), outputPath)
     else:

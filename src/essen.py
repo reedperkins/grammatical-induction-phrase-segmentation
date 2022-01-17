@@ -50,7 +50,8 @@ def getAnnotationsForTune(tune: str) -> List[List[Span]]:
         spanStart, spanEnd = indexOffset, indexOffset + len(sequence)
         patterns[hashableSeq].append((spanStart, spanEnd))
         indexOffset += len(sequence)
-    anns = [spans for seq, spans in patterns.items() if len(spans) > 1 and len(seq) > 1] 
+    # anns = [spans for seq, spans in patterns.items() if len(spans) > 1 and len(seq) > 1]
+    anns = [spans for seq, spans in patterns.items()] 
     return [(i, ann) for i, ann in enumerate(anns)]
 
 def getTunesFromFile(file):

@@ -6,12 +6,72 @@ Pattern A:
 @@@ Tune index: 0
 Pattern A:
 	Span 0:15
+Pattern B:
+	Span 15:30
+
+@@@ Tune index: 0
+Pattern A:
+	Span 0:15
+Pattern B:
 	Span 15:30
 
 @@@ Tune index: 0
 Pattern A:
 	Span 0:15
 	Span 15:30
+
+@@@ Tune index: 0
+Pattern A:
+	Span 0:15
+	Span 15:30
+
+@@@ Tune index: 1
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:29
+Pattern C:
+	Span 29:43
+Pattern D:
+	Span 43:59
+
+@@@ Tune index: 1
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:29
+Pattern C:
+	Span 29:43
+Pattern D:
+	Span 43:59
+
+@@@ Tune index: 1
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:29
+Pattern C:
+	Span 29:44
+Pattern D:
+	Span 44:59
+
+@@@ Tune index: 1
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:29
+Pattern C:
+	Span 29:59
+
+@@@ Tune index: 1
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:29
+Pattern C:
+	Span 29:44
+Pattern D:
+	Span 44:59
 
 @@@ Tune index: 2
 Pattern A:
@@ -20,22 +80,60 @@ Pattern A:
 Pattern B:
 	Span 8:18
 	Span 26:36
+Pattern C:
+	Span 18:26
+Pattern D:
+	Span 36:43
+Pattern E:
+	Span 43:53
+Pattern F:
+	Span 63:74
 
 @@@ Tune index: 2
 Pattern A:
 	Span 0:18
 	Span 18:36
+Pattern B:
+	Span 36:53
+Pattern C:
+	Span 53:74
+
+@@@ Tune index: 2
+Pattern A:
+	Span 0:18
+Pattern B:
+	Span 18:36
+Pattern C:
+	Span 36:53
+Pattern D:
+	Span 53:74
+
+@@@ Tune index: 2
+Pattern A:
+	Span 0:18
+Pattern B:
+	Span 18:36
+Pattern C:
+	Span 36:53
+Pattern D:
+	Span 53:74
 
 @@@ Tune index: 2
 Pattern A:
 	Span 0:18
 	Span 18:36
 	Span 53:74
+Pattern B:
+	Span 36:53
 
 @@@ Tune index: 3
 Pattern A:
 	Span 0:14
 	Span 14:27
+Pattern B:
+	Span 27:42
+Pattern C:
+	Span 42:56
 
 @@@ Tune index: 3
 Pattern A:
@@ -49,27 +147,45 @@ Pattern B:
 Pattern A:
 	Span 0:14
 	Span 14:27
+Pattern B:
+	Span 27:42
+Pattern C:
+	Span 42:56
 
 @@@ Tune index: 3
 Pattern A:
 	Span 0:14
 	Span 14:27
+Pattern B:
+	Span 27:42
+Pattern C:
+	Span 42:56
 
 @@@ Tune index: 3
 Pattern A:
 	Span 0:14
 	Span 14:27
 	Span 42:56
+Pattern B:
+	Span 27:42
 
 @@@ Tune index: 4
 Pattern A:
 	Span 0:11
 	Span 11:23
+Pattern B:
+	Span 23:36
+Pattern C:
+	Span 36:42
 
 @@@ Tune index: 4
 Pattern A:
 	Span 0:11
 	Span 11:23
+Pattern B:
+	Span 23:36
+Pattern C:
+	Span 36:42
 
 @@@ Tune index: 4
 Pattern A:
@@ -80,9 +196,51 @@ Pattern B:
 	Span 36:42
 
 @@@ Tune index: 4
+Pattern A:
+	Span 0:11
+Pattern B:
+	Span 11:23
+Pattern C:
+	Span 23:36
+Pattern D:
+	Span 36:42
+
+@@@ Tune index: 4
+Pattern A:
+	Span 0:11
 Pattern B:
 	Span 11:23
 	Span 23:36
+Pattern C:
+	Span 36:42
+
+@@@ Tune index: 5
+Pattern A:
+	Span 0:15
+Pattern B:
+	Span 15:30
+
+@@@ Tune index: 5
+Pattern A:
+	Span 0:15
+Pattern B:
+	Span 15:30
+
+@@@ Tune index: 5
+Pattern A:
+	Span 0:15
+Pattern B:
+	Span 15:30
+
+@@@ Tune index: 5
+Pattern A:
+	Span 0:7
+Pattern B:
+	Span 7:15
+Pattern C:
+	Span 15:22
+Pattern D:
+	Span 22:30
 
 @@@ Tune index: 5
 Pattern A:
@@ -96,42 +254,122 @@ Pattern B:
 Pattern A:
 	Span 0:6
 	Span 6:12
+Pattern B:
+	Span 12:26
+
+@@@ Tune index: 6
+Pattern A:
+	Span 0:12
+Pattern B:
+	Span 12:26
 
 @@@ Tune index: 6
 Pattern A:
 	Span 0:6
 	Span 6:12
+Pattern B:
+	Span 12:26
+
+@@@ Tune index: 6
+Pattern A:
+	Span 0:12
+Pattern B:
+	Span 12:26
 
 @@@ Tune index: 6
 Pattern A:
 	Span 0:6
 	Span 6:12
 	Span 20:26
+Pattern B:
+	Span 12:20
 
 @@@ Tune index: 7
 Pattern A:
 	Span 0:10
 	Span 20:30
+Pattern B:
+	Span 10:20
+Pattern C:
+	Span 30:40
+
+@@@ Tune index: 7
+Pattern A:
+	Span 0:9
+Pattern B:
+	Span 9:19
+Pattern C:
+	Span 19:29
+Pattern D:
+	Span 29:40
 
 @@@ Tune index: 7
 Pattern A:
 	Span 0:10
 	Span 21:30
+Pattern B:
+	Span 10:21
+Pattern C:
+	Span 30:40
 
 @@@ Tune index: 7
 Pattern A:
 	Span 0:9
 	Span 9:17
+Pattern B:
+	Span 17:25
+Pattern C:
+	Span 25:31
+Pattern D:
+	Span 31:40
 
 @@@ Tune index: 7
 Pattern A:
 	Span 0:10
 	Span 19:30
+Pattern B:
+	Span 10:19
+Pattern C:
+	Span 30:40
+
+@@@ Tune index: 8
+Pattern A:
+	Span 0:9
+Pattern B:
+	Span 9:18
+Pattern C:
+	Span 18:28
+Pattern D:
+	Span 28:38
 
 @@@ Tune index: 8
 Pattern A:
 	Span 0:9
 	Span 9:18
+Pattern B:
+	Span 18:28
+Pattern C:
+	Span 28:38
+
+@@@ Tune index: 8
+Pattern A:
+	Span 0:9
+Pattern B:
+	Span 9:18
+Pattern C:
+	Span 18:28
+Pattern D:
+	Span 28:38
+
+@@@ Tune index: 8
+Pattern A:
+	Span 0:9
+Pattern B:
+	Span 9:18
+Pattern C:
+	Span 18:28
+Pattern D:
+	Span 28:38
 
 @@@ Tune index: 8
 Pattern A:
@@ -143,16 +381,72 @@ Pattern B:
 
 @@@ Tune index: 9
 Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:28
+
+@@@ Tune index: 9
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:28
+
+@@@ Tune index: 9
+Pattern A:
+	Span 0:8
+Pattern B:
+	Span 8:14
+Pattern C:
+	Span 14:22
+Pattern D:
+	Span 22:28
+
+@@@ Tune index: 9
+Pattern A:
 	Span 0:8
 	Span 14:22
 Pattern B:
 	Span 8:14
 	Span 22:28
 
+@@@ Tune index: 9
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:28
+
+@@@ Tune index: 10
+Pattern A:
+	Span 0:9
+Pattern B:
+	Span 9:18
+Pattern C:
+	Span 18:27
+Pattern D:
+	Span 27:36
+
+@@@ Tune index: 10
+Pattern A:
+	Span 0:8
+Pattern B:
+	Span 8:17
+Pattern C:
+	Span 17:24
+Pattern D:
+	Span 24:36
+
 @@@ Tune index: 10
 Pattern A:
 	Span 0:15
 	Span 27:36
+Pattern B:
+	Span 15:27
+
+@@@ Tune index: 10
+Pattern A:
+	Span 0:18
+Pattern B:
+	Span 18:36
 
 @@@ Tune index: 10
 Pattern A:
@@ -170,6 +464,22 @@ Pattern B:
 	Span 19:24
 
 @@@ Tune index: 11
+Pattern A:
+	Span 0:13
+Pattern B:
+	Span 13:24
+
+@@@ Tune index: 11
+Pattern A:
+	Span 0:13
+Pattern B:
+	Span 13:24
+
+@@@ Tune index: 11
+Pattern A:
+	Span 0:6
+Pattern B:
+	Span 6:13
 Pattern C:
 	Span 13:19
 	Span 19:24
@@ -178,21 +488,57 @@ Pattern C:
 Pattern A:
 	Span 0:6
 	Span 19:24
+Pattern B:
+	Span 6:13
+Pattern C:
+	Span 13:19
 
 @@@ Tune index: 12
+Pattern A:
+	Span 0:13
 Pattern B:
 	Span 13:26
+Pattern C:
+	Span 26:39
+Pattern D:
 	Span 39:52
 
 @@@ Tune index: 12
+Pattern A:
+	Span 0:13
 Pattern B:
 	Span 13:26
+Pattern C:
+	Span 26:39
+Pattern D:
 	Span 39:52
 
 @@@ Tune index: 12
+Pattern A:
+	Span 0:13
 Pattern B:
 	Span 13:26
 	Span 39:52
+Pattern C:
+	Span 26:39
+
+@@@ Tune index: 12
+Pattern A:
+	Span 0:13
+Pattern B:
+	Span 13:26
+	Span 39:52
+Pattern C:
+	Span 26:39
+
+@@@ Tune index: 12
+Pattern A:
+	Span 0:13
+Pattern B:
+	Span 13:26
+	Span 39:52
+Pattern C:
+	Span 26:39
 
 @@@ Tune index: 13
 Pattern A:
@@ -206,6 +552,8 @@ Pattern B:
 Pattern A:
 	Span 0:19
 	Span 19:38
+Pattern B:
+	Span 38:56
 
 @@@ Tune index: 13
 Pattern A:
@@ -236,21 +584,33 @@ Pattern A:
 	Span 0:7
 	Span 7:14
 	Span 30:37
+Pattern B:
+	Span 14:21
+Pattern C:
+	Span 21:30
+Pattern D:
+	Span 37:44
 
 @@@ Tune index: 14
 Pattern A:
 	Span 0:14
 	Span 30:44
+Pattern B:
+	Span 14:30
 
 @@@ Tune index: 14
 Pattern A:
 	Span 0:14
 	Span 30:44
+Pattern B:
+	Span 14:30
 
 @@@ Tune index: 14
 Pattern A:
 	Span 0:14
 	Span 30:44
+Pattern B:
+	Span 14:30
 
 @@@ Tune index: 14
 Pattern A:
@@ -258,11 +618,31 @@ Pattern A:
 	Span 7:14
 	Span 30:37
 	Span 37:44
+Pattern B:
+	Span 14:21
+Pattern C:
+	Span 21:30
+
+@@@ Tune index: 15
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:28
+
+@@@ Tune index: 15
+Pattern A:
+	Span 0:14
+Pattern B:
+	Span 14:28
 
 @@@ Tune index: 15
 Pattern A:
 	Span 0:7
 	Span 21:28
+Pattern B:
+	Span 7:14
+Pattern C:
+	Span 14:21
 
 @@@ Tune index: 15
 Pattern A:
@@ -284,22 +664,46 @@ Pattern B:
 Pattern A:
 	Span 0:8
 	Span 8:16
+Pattern B:
+	Span 16:26
+Pattern C:
+	Span 26:34
+Pattern D:
+	Span 34:42
+Pattern E:
+	Span 42:50
 
 @@@ Tune index: 16
 Pattern A:
 	Span 0:16
 	Span 16:26
 	Span 26:34
+Pattern C:
+	Span 34:42
+Pattern D:
+	Span 42:50
 
 @@@ Tune index: 16
 Pattern A:
 	Span 0:16
 	Span 16:34
+Pattern B:
+	Span 34:50
+
+@@@ Tune index: 16
+Pattern A:
+	Span 0:17
+Pattern B:
+	Span 17:34
+Pattern C:
+	Span 34:50
 
 @@@ Tune index: 16
 Pattern A:
 	Span 0:17
 	Span 34:50
+Pattern B:
+	Span 17:34
 
 @@@ Tune index: 17
 Pattern A:
@@ -324,6 +728,8 @@ Pattern C:
 Pattern A:
 	Span 0:33
 	Span 49:82
+Pattern B:
+	Span 33:49
 
 @@@ Tune index: 17
 Pattern A:
@@ -331,6 +737,8 @@ Pattern A:
 	Span 17:33
 	Span 49:66
 	Span 66:82
+Pattern B:
+	Span 33:49
 
 @@@ Tune index: 17
 Pattern A:
@@ -338,6 +746,8 @@ Pattern A:
 	Span 17:33
 	Span 49:66
 	Span 66:82
+Pattern B:
+	Span 33:49
 
 @@@ Tune index: 17
 Pattern A:
@@ -362,6 +772,10 @@ Pattern B:
 Pattern A:
 	Span 0:16
 	Span 16:34
+Pattern B:
+	Span 34:50
+Pattern C:
+	Span 50:65
 
 @@@ Tune index: 18
 Pattern A:
@@ -389,12 +803,38 @@ Pattern B:
 @@@ Tune index: 19
 Pattern A:
 	Span 0:14
+Pattern B:
 	Span 14:29
+Pattern C:
+	Span 29:42
+Pattern D:
+	Span 42:56
+
+@@@ Tune index: 19
+Pattern A:
+	Span 0:14
+	Span 14:29
+Pattern B:
+	Span 29:42
+Pattern C:
+	Span 42:56
 
 @@@ Tune index: 19
 Pattern A:
 	Span 0:8
 	Span 14:22
+Pattern B:
+	Span 8:14
+Pattern C:
+	Span 22:29
+Pattern D:
+	Span 29:36
+Pattern E:
+	Span 36:42
+Pattern F:
+	Span 42:50
+Pattern G:
+	Span 50:56
 
 @@@ Tune index: 19
 Pattern A:
@@ -403,6 +843,10 @@ Pattern A:
 Pattern B:
 	Span 29:36
 	Span 36:42
+Pattern C:
+	Span 42:51
+Pattern D:
+	Span 51:56
 
 @@@ Tune index: 19
 Pattern A:
