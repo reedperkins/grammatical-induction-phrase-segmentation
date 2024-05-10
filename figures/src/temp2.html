@@ -1,0 +1,278 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <!-- for MSIE 10 on Windows 8 -->
+    <meta http-equiv="X-UA-Compatible" content="requiresActiveX=true" />
+    <title>Music21 Fragment</title>
+</head>
+
+<body>
+    <div id='canvas'>
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        
+    </div>
+</body>
+<script>
+    function drawBox({ top, left, height, width, color }) {
+        var div = document.createElement('div');
+        div.style.top = top;
+        div.style.left = left;
+        div.style.width = width;
+        div.style.height = height;
+        div.style.backgroundColor = color;
+        div.style.position = 'absolute';
+        div.style.border = '5px solid black';
+        div.style.mixBlendMode = 'color';
+        document.getElementById('canvas').append(div);
+    }
+
+    function getVisualLineMap(notes) {
+        var lineIndex = 0;
+        var lineMap = new Map();
+        lineMap.set(0, 0);
+        for (var i = 1; i < notes.length; i++) {
+            y = notes[i].getBoundingClientRect().y;
+            prevY = notes[i - 1].getBoundingClientRect().y;
+            if ((y - prevY) > 200) {
+                lineIndex += 1;
+            }
+            lineMap.set(i, lineIndex);
+        }
+        return lineMap;
+    }
+
+    function getVisualLineChunks(span, lineYAnchors) {
+        /**
+         * Break up span into chunks based on visual lines
+         */
+
+        // Find the starting line index
+        var spanStart = span[0];
+        var lineIndex = 0;
+        var threshold = 200;
+        lineYAnchors.forEach((ay, i) => {
+            var startY = spanStart.getBoundingClientRect().y;
+            if (Math.abs(ay - startY) < threshold) {
+                lineIndex = i;
+                return;
+            }
+        });
+
+        var chunks = [
+            {
+                notes: [],
+                visualLineIndex: lineIndex
+            }
+        ];
+
+        var anchorY = lineYAnchors[lineIndex];
+        for (var i = 0; i < span.length; i++) {
+            var y = span[i].getBoundingClientRect().y;
+            if (Math.abs(anchorY - y) < threshold) {
+                chunks[chunks.length - 1].notes.push(span[i]);
+            } else { // new visual line started
+                lineIndex += 1;
+                anchorY = lineYAnchors[lineIndex];
+                chunks.push({
+                    notes: [span[i]],
+                    visualLineIndex: lineIndex
+                });
+            }
+        }
+        return chunks;
+    }
+
+    function getSpanBox(span, yAnchor, hierarchyLevel, patternNumber) {
+
+        // Defaults
+        var patternColors = new Map([
+            [0, "rgba(58, 127, 84, 0.4)"],
+            [1, "rgba(82, 119, 181, 0.4)"],
+            [2, "rgba(254, 217, 166, 0.4)"],
+            [3, "rgba(84, 223, 39, 0.4)"],
+            [4, "rgba(110, 149, 216, 0.4)"],
+            [5, "rgba(27, 103, 81, 0.4)"],
+            [6, "rgba(161, 214, 111, 0.4)"],
+            [7, "rgba(134, 43, 73, 0.4)"],
+            [8, "rgba(48, 67, 68, 0.4)"],
+            [9, "rgba(46, 61, 193, 0.4)"],
+            [10, "rgba(6, 209, 94, 0.4)"],
+            [11, "rgba(51, 67, 2, 0.4)"],
+            [12, "rgba(10, 226, 34, 0.4)"],
+            [13, "rgba(127, 99, 203, 0.4)"],
+            [14, "rgba(107, 26, 229, 0.4)"],
+            [15, "rgba(229, 69, 59, 0.4)"],
+            [16, "rgba(127, 44, 111, 0.4)"],
+            [17, "rgba(44, 170, 166, 0.4)"],
+            [18, "rgba(123, 77, 111, 0.4)"],
+            [19, "rgba(119, 126, 56, 0.4)"],
+            [20, "rgba(2, 82, 162, 0.4)"],
+            [21, "rgba(156, 129, 101, 0.4)"],
+            [22, "rgba(196, 148, 250, 0.4)"],
+            [23, "rgba(50, 241, 226, 0.4)"],
+            [24, "rgba(250, 29, 197, 0.4)"],
+            [25, "rgba(215, 137, 138, 0.4)"],
+            [26, "rgba(167, 170, 234, 0.4)"],
+            [27, "rgba(27, 185, 60, 0.4)"],
+            [28, "rgba(206, 58, 204, 0.4)"],
+            [29, "rgba(81, 109, 34, 0.4)"],
+            [30, "rgba(251, 113, 29, 0.4)"],
+            [31, "rgba(104, 151, 248, 0.4)"],
+            [32, "rgba(55, 99, 94, 0.4)"],
+            [33, "rgba(125, 215, 95, 0.4)"],
+            [34, "rgba(233, 96, 101, 0.4)"],
+            [35, "rgba(6, 68, 118, 0.4)"],
+            [36, "rgba(35, 123, 180, 0.4)"],
+            [37, "rgba(34, 165, 165, 0.4)"],
+            [38, "rgba(145, 111, 94, 0.4)"],
+            [39, "rgba(94, 18, 113, 0.4)"],
+            [40, "rgba(212, 42, 109, 0.4)"],
+            [41, "rgba(98, 149, 132, 0.4)"],
+            [42, "rgba(178, 42, 181, 0.4)"],
+            [43, "rgba(206, 94, 215, 0.4)"],
+            [44, "rgba(48, 13, 145, 0.4)"],
+            [45, "rgba(146, 20, 34, 0.4)"],
+            [46, "rgba(20, 210, 87, 0.4)"],
+            [47, "rgba(15, 83, 102, 0.4)"],
+            [48, "rgba(157, 149, 50, 0.4)"],
+            [49, "rgba(192, 177, 22, 0.4)"],
+            [50, "rgba(158, 96, 55, 0.4)"],
+            [51, "rgba(122, 82, 184, 0.4)"],
+            [52, "rgba(118, 73, 110, 0.4)"],
+            [53, "rgba(155, 80, 78, 0.4)"],
+            [54, "rgba(226, 107, 90, 0.4)"],
+            [55, "rgba(118, 225, 106, 0.4)"],
+            [56, "rgba(209, 205, 208, 0.4)"],
+            [57, "rgba(121, 93, 252, 0.4)"],
+            [58, "rgba(234, 88, 123, 0.4)"],
+            [59, "rgba(163, 6, 80, 0.4)"],
+            [60, "rgba(175, 201, 216, 0.4)"],
+            [61, "rgba(51, 54, 25, 0.4)"],
+            [62, "rgba(154, 15, 176, 0.4)"],
+            [63, "rgba(230, 212, 230, 0.4)"],
+            [64, "rgba(132, 79, 94, 0.4)"],
+            [65, "rgba(136, 162, 11, 0.4)"],
+            [66, "rgba(168, 186, 108, 0.4)"],
+            [67, "rgba(122, 176, 199, 0.4)"],
+            [68, "rgba(24, 46, 39, 0.4)"],
+            [69, "rgba(196, 14, 67, 0.4)"],
+            [70, "rgba(129, 96, 159, 0.4)"],
+            [71, "rgba(118, 12, 19, 0.4)"],
+            [72, "rgba(8, 66, 170, 0.4)"],
+            [73, "rgba(210, 224, 78, 0.4)"],
+            [74, "rgba(90, 190, 122, 0.4)"],
+            [75, "rgba(208, 60, 142, 0.4)"],
+            [76, "rgba(85, 156, 70, 0.4)"],
+            [77, "rgba(111, 107, 5, 0.4)"],
+            [78, "rgba(146, 13, 179, 0.4)"],
+            [79, "rgba(4, 207, 151, 0.4)"],
+            [80, "rgba(234, 170, 151, 0.4)"],
+            [81, "rgba(17, 138, 92, 0.4)"],
+            [82, "rgba(197, 211, 110, 0.4)"],
+            [83, "rgba(221, 119, 19, 0.4)"],
+            [84, "rgba(55, 182, 204, 0.4)"],
+            [85, "rgba(143, 200, 83, 0.4)"],
+            [86, "rgba(149, 156, 54, 0.4)"],
+            [87, "rgba(126, 1, 2, 0.4)"],
+            [88, "rgba(223, 130, 176, 0.4)"],
+            [89, "rgba(157, 42, 75, 0.4)"],
+            [90, "rgba(138, 54, 195, 0.4)"],
+            [91, "rgba(48, 101, 160, 0.4)"],
+            [92, "rgba(34, 137, 246, 0.4)"],
+            [93, "rgba(10, 248, 150, 0.4)"],
+            [94, "rgba(223, 125, 18, 0.4)"],
+            [95, "rgba(226, 129, 189, 0.4)"],
+            [96, "rgba(137, 232, 218, 0.4)"],
+            [97, "rgba(146, 67, 182, 0.4)"],
+            [98, "rgba(91, 75, 79, 0.4)"],
+            [99, "rgba(13, 57, 215, 0.4)"],
+        ]);
+        var hierarchyShrinkageFactor = 20
+        var hierarchyShrinkage = hierarchyShrinkageFactor * hierarchyLevel;
+        var xPadding = 5;
+        var yOffset = 200;
+        var defaultHeight = yOffset * 2;
+
+        // Compute bounding box coordinates for div
+        var spanStart = span[0];
+        var spanEnd = span[span.length - 1];
+        var leftRect = spanStart.getBoundingClientRect();
+        var rightRect = spanEnd.getBoundingClientRect();
+        var left = leftRect.x - xPadding;
+        var right = rightRect.x + rightRect.width + xPadding;
+        var width = right - left;
+        var top = yAnchor - yOffset + hierarchyShrinkage;
+        var height = defaultHeight - (2 * hierarchyShrinkage);
+        // var color = hierarchyColors.get(hierarchyLevel);
+        var color = patternColors.get(patternNumber);
+        console.log(color);
+        return {
+            top: `${top}px`,
+            left: `${left}px`,
+            height: `${height}px`,
+            width: `${width}px`,
+            color: color,
+        };
+    }
+
+    function drawSpan(span, hierarchy, lineAnchors, patternNumber) {
+        var chunks = getVisualLineChunks(span, lineAnchors);
+        chunks.forEach(({ notes, visualLineIndex }) => {
+            var yAnchor = lineAnchors[visualLineIndex];
+            var box = getSpanBox(notes, yAnchor, hierarchy, patternNumber);
+            drawBox(box);
+        });
+    }
+
+    window.onload = function drawBoxes() {
+        var notes = Array.from(document.getElementsByClassName('Note'));
+        var pattern = [
+            [
+                {
+                    start: 0,
+                    end: 8,
+                    hierarchy: 0
+                },
+                {
+                    start: 53,
+                    end: 63,
+                    hierarchy: 0
+                },
+            ],
+            [
+                {
+                    start: 8,
+                    end: 18,
+                    hierarchy: 0
+                },
+                {
+                    start: 26,
+                    end: 36,
+                    hierarchy: 0
+                },
+            ],
+
+        ];
+
+        var clefs = Array.from(document.getElementsByClassName('Clef')); // used for y pos anchors
+        var lineAnchors = clefs.map(c => {
+            // Get center of clef bounding box
+            var height = c.getBoundingClientRect().height;
+            var y = c.getBoundingClientRect().y;
+            return y + (height / 2);
+        });
+
+        pattern.forEach((spans, i) => {
+            spans.forEach(({ start, end, hierarchy }) => {
+                var span = notes.slice(start, end);
+                drawSpan(span, hierarchy, lineAnchors, i);
+            });
+        });
+
+    }
+</script>
+
+</html>

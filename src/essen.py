@@ -149,17 +149,17 @@ if __name__ == '__main__':
         sequences = loadSequenceFile(dataPath / 'sequences.txt')
         annotations = loadAnnotationsFile(dataPath / 'annotations.txt')
 
-        import random
-        annotations = dict(
-            random.sample(
-                list(annotations.items()),
-                300
-            )
-        )
+        # import random
+        # annotations = dict(
+        #     random.sample(
+        #         list(annotations.items()),
+        #         1000
+        #     )
+        # )
 
         print('Creating zipped pickle')
         pickles = getPickles(sequences, annotations, 'essen')
-        writePickles(pickles, outputPath / 'essen300.pkl.gz')
+        writePickles(pickles, outputPath / 'essen.pkl.gz')
     elif args[0] == 'ann':
         outputPath = Path(args[2]) if len(args) == 3 else Path(args[1]).parent
         createSequenceAndAnnotationFiles(Path(args[1]), outputPath)

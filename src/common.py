@@ -95,4 +95,15 @@ def formatAnnotation2(ann):
             result += f'Pattern {identifier}:\n'
         for spanStart, spanEnd in pattern:
             result += f'\tSpan {spanStart}:{spanEnd}\n'
-    return result             
+    return result      
+
+
+def loadHymnAnnotations(path: Path):
+    with open(path) as f:
+        entries = re.split('\n\n', f.read())[:-1] # remove trailing empty space
+    annotations = defaultdict(list)
+    for e in entries:
+        index, annStr = splitIndexHeaderFromStr(e)
+        ann = parseAnnotationStr(annStr)
+        annotations[index].extend([ann])
+    return annotations       
